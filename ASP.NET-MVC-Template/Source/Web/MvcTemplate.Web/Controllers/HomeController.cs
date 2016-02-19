@@ -13,13 +13,16 @@
     {
         private readonly IJokesService jokes;
         private readonly ICategoriesService jokeCategories;
+        private readonly IideasService ideass;
 
         public HomeController(
             IJokesService jokes,
-            ICategoriesService jokeCategories)
+            ICategoriesService jokeCategories,
+            IideasService ideass)
         {
             this.jokes = jokes;
             this.jokeCategories = jokeCategories;
+            this.ideass = ideass;
         }
 
         public ActionResult Index()
@@ -30,10 +33,16 @@
                     "categories",
                     () => this.jokeCategories.GetAll().To<JokeCategoryViewModel>().ToList(),
                     30 * 60);
+            var ideass =
+                this.Cache.Get(
+                    "ideass",
+                    () => this.ideass.GetAll().To<IdeasViewModel>().ToList(),
+                    30 * 60);
             var viewModel = new IndexViewModel
             {
                 Jokes = jokes,
-                Categories = categories
+                Categories = categories,
+                Ideass = ideass
             };
 
             return this.View(viewModel);

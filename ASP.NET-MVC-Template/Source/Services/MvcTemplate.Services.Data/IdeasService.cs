@@ -15,23 +15,23 @@
             this.ideass = ideass;
         }
 
-        public JokeCategory EnsureCategory(string name)
+        public Ideas EnsureCategory(string title)
         {
-            var ideas = this.ideass.All().FirstOrDefault(x => x.Title == name);
+            var ideas = this.ideass.All().FirstOrDefault(x => x.Title == title);
             if (ideas != null)
             {
                 return ideas;
             }
 
-            ideass = new Ideas { Title = title };
-            this.ideass.Add(idea);
+            ideas = new Ideas { Title = title };
+            this.ideass.Add(ideas);
             this.ideass.Save();
             return ideas;
         }
 
-        public IQueryable<JokeCategory> GetAll()
+        public IQueryable<Ideas> GetAll()
         {
-            return this.categories.All().OrderBy(x => x.Name);
+            return this.ideass.All().OrderBy(x => x.Title);
         }
 
         IQueryable<Ideas> IideasService.GetAll()
