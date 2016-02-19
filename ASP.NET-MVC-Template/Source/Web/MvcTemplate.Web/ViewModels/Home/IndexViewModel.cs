@@ -7,7 +7,5 @@
         public IEnumerable<JokeViewModel> Jokes { get; set; }
 
         public IEnumerable<JokeCategoryViewModel> Categories { get; set; }
-
-        public IEnumerable<IdeasViewModel> Ideas { get; set; }
     }
 }
