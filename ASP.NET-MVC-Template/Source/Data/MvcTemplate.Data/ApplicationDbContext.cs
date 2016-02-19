@@ -21,6 +21,14 @@
 
         public IDbSet<JokeCategory> JokesCategories { get; set; }
 
+        public IDbSet<Ideas> Ideas { get; set; }
+
+        public IDbSet<VotesForIdeas> VotesForIdeas { get; set; }
+
+        public IDbSet<CommentsForIdeas> CommentsForIdeas { get; set; }
+
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
