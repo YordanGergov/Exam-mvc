@@ -4,13 +4,13 @@
 }
 <h1>Вицове</h1>
 <div class="row">
-    @foreach (var joke in Model.Jokes)
+    @foreach (var ideas in Model.Ideas)
     {
         <div class="col-md-4">
-            <a href="@joke.Url">
-                @Html.Raw(joke.Content.Replace("\n", "<br />"))
+            <a href="@ideas.Title">
+                @Html.Raw(ideas.Descriptions.Replace("\n", "<br />"))
             </a>
-            <div>@joke.Category</div>
+            <div>@ideas.Descriptions</div>
         </div>
     }
 </div>

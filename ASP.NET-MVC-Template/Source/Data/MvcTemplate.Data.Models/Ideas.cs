@@ -18,6 +18,8 @@
 
         public string AuthorIP { get; set; }
 
+        public int VotePointsAll { get; set; }
+
         public virtual ICollection<VotesForIdeas> VotesForIdeas { get; set; }
 
         public virtual ICollection<CommentsForIdeas> CommentsForIdeas { get; set; }
