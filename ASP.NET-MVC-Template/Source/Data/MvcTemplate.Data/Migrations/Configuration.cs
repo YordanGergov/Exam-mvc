@@ -14,7 +14,7 @@
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ApplicationDbContext context)
@@ -39,6 +39,24 @@
                 // Assign user to admin role
                 userManager.AddToRole(user.Id, GlobalConstants.AdministratorRoleName);
             }
+
+            if (context.Users.Count() < 2)
+            {
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var role = new IdentityRole { Name = "MyRegisteredUsers" };
+                roleManager.Create(role);
+
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = new ApplicationUser { UserName = "user1@site.com", Email = "user1@site.com" };
+                userManager.Create(user, "user1");
+                context.Users.Add(user);
+                context.SaveChanges();
+               // userManager.AddToRole(user.Id, "MyRegisteredUsers");
+            }
+
+
         }
     }
 }
