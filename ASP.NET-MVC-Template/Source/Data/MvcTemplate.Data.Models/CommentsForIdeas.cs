@@ -12,5 +12,9 @@
 
         public string Email { get; set; }
 
+        public int? IdeasId { get; set; }
+
+        public virtual Ideas Ideas { get; set; }
+
     }
 }

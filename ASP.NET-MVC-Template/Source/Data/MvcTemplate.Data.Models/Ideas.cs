@@ -11,6 +11,7 @@
             this.VotesForIdeas = new HashSet<VotesForIdeas>();
             this.CommentsForIdeas = new HashSet<CommentsForIdeas>();
         }
+
         public string Title { get; set; }
 
         public string Description { get; set; }

@@ -2,14 +2,19 @@
 {
     using System;
     using MvcTemplate.Data.Common.Models;
-
-    public class VotesForIdeas : BaseModel<int>, IDeletableEntity
+    using System.ComponentModel.DataAnnotations;
+    public class VotesForIdeas : BaseModel<int>
     {
 
         public string IP { get; set; }
 
         public int VotePoints { get; set; }
 
-        // public virtual JokeCategory Category { get; set; }
+        public VoteType Type { get; set; }
+
+        public int? IdeasId { get; set; }
+
+        public virtual Ideas Ideas { get; set; }
+
     }
 }
