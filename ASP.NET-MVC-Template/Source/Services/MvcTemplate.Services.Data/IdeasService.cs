@@ -15,7 +15,7 @@
             this.ideass = ideass;
         }
 
-        public Ideas EnsureCategory(string title)
+        public Ideas EnsureIdeas(string title)
         {
             var ideas = this.ideass.All().FirstOrDefault(x => x.Title == title);
             if (ideas != null)
@@ -32,16 +32,6 @@
         public IQueryable<Ideas> GetAll()
         {
             return this.ideass.All().OrderBy(x => x.Title);
-        }
-
-        IQueryable<Ideas> IideasService.GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Ideas EnsureIdeas(string name)
-        {
-            throw new NotImplementedException();
         }
     }
 }
