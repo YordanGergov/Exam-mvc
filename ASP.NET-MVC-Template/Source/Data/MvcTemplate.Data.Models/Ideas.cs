@@ -12,11 +12,14 @@
             this.CommentsForIdeas = new HashSet<CommentsForIdeas>();
         }
 
+        public int Id { get; set; }
         public string Title { get; set; }
 
         public string Description { get; set; }
 
         public string AuthorIP { get; set; }
+
+        public int VotesTotalAll { get; set; }
 
         public virtual ICollection<VotesForIdeas> VotesForIdeas { get; set; }
 
